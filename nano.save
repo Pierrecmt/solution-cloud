@@ -1,0 +1,10 @@
+Quelle date pour la sauvegarde ? :"
+read saisie
+
+if [ ! -d /home/DAYLI_BACKUP/DAYLI_$saisie ];
+then
+	echo "Pas valide"
+else
+	sshpass -p "root" rsync -a -e ssh /home/DAYLI_BACKUP/DAYLI_$saisie/nextcloud/* 192.168.43.208:/var/www/html/nextcloud
+	echo "Restauration complétée"
+fi
